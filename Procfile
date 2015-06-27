@@ -1,0 +1,1 @@
+web: gunicorn ClassConnect.wsgi:application
