@@ -1,11 +1,6 @@
 import os
 import sys
 
-try:
-    os.chdir(os.path.dirname(__file__))
-except WindowsError:
-    pass
-
 print "*** Checking for DB Migrations... ***"
 os.system('python manage.py makemigrations')
 
