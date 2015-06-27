@@ -16,7 +16,7 @@ urlpatterns = patterns('',
     # url(r'^$', 'ClassConnect.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
     
-    url(r'^class$', views.ClassPage.as_view(), name='class'),
+    url(r'^classes$', views.ClassesPage.as_view(), name='classes'),
     url(r'^messaging$', views.MessagingPage.as_view(), name='msg'),
     url(r'^$', views.LoginPage.as_view(), name='login'),
     
