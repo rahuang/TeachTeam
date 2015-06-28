@@ -78,6 +78,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'users',
     'testapp',
+    'ClassConnect',
 )
 
 MIDDLEWARE_CLASSES = (
