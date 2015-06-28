@@ -70,8 +70,25 @@ class ClassesPage(TemplateView):
 
 class ClassPage(TemplateView):
     def get(self, request, id_name=None):
-        data = request.GET['id']
-        return HttpResponse(data)
+        r = requests.post('http://sandbox.api.hmhco.com/v1/sample_token?client_id=40694671-d66a-44b9-a1f5-471522046577.hmhco.com&grant_type=password&username=gandalf&password=password',
+                        headers={'Vnd-HMH-Api-Key':'8ad2641f17b878c1e7df05ee2bb09dbb', 
+                        'Content-Type':'application/x-www-form-urlencoded'})
+        data = json.loads(r.text)
+        classID = request.GET['id']
+        assignmentData = requests.get('http://sandbox.api.hmhco.com/v1/assignments',
+                        headers={'Authorization': data['access_token'],
+                        'Vnd-HMH-Api-Key':'8ad2641f17b878c1e7df05ee2bb09dbb'})
+        assignmentData = json.loads(assignmentData.text)
+        completeAssignments = []
+        notCompleteAssignments = []
+        for assignment in assignmentData:
+            if assignment['sectionRefId'] == classID:
+                if assignment['status'] == "COMPLETED":
+                    completeAssignments.append(assignment)
+                else:
+                    notCompleteAssignments.append(assignment)
+
+        return render(request, 'class.html', {"completeAssignments": completeAssignments, "notCompleteAssignments": notCompleteAssignments}) 
     
     
 class IndexPage(TemplateView):
