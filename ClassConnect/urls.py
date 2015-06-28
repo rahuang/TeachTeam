@@ -23,6 +23,8 @@ urlpatterns = patterns('',
     url(r'^process-email$', views.ProcessEmailPage.as_view(), name='processemail'),
     url(r'^gradebook$', views.GradeBookPage.as_view(), name='gradebook'),
     url(r'^schedule$', views.SchedulePage.as_view(), name='schedule'),
+    url(r'^gradeanalysis$', views.GradeAnalysis.as_view(), name='gradeanalysis'),
+
     url(r'^$', views.LoginPage.as_view(), name='login'),
     
     url(r'^test/', include('testapp.urls')),

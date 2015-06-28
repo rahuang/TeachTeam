@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block body %}
+<section class="wrapper">            
+              <!--overview start-->
+              <div class="row">
+                <div class="col-lg-12">
+                    <h3 class="page-header"><i class="fa fa-laptop"></i> </h3>
+                    <ol class="breadcrumb">
+                        <li><i class="fa fa-home"></i><a href="/classes">Home</a></li>
+                        <li><i class="fa fa-laptop"></i>Grade Analysis</li>                          
+                    </ol>
+                </div>
+            </div>
+       
+            
+
+
+
+
+            <div>
+               <!-- Pie -->
+                <div class="col-lg-6">
+                    <section class="panel">
+                        <header class="panel-heading">
+                            Pie
+                        </header>
+                        <div class="panel-body text-center">
+                            <canvas id="pie" height="300" width="400"></canvas>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+              </div>
+                <!-- statics end -->
+
+                 
+              </div><br><br>
+        
+              <!-- project team & activity end -->
+
+          </section>
+
+{% endblock %}

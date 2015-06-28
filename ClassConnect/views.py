@@ -52,6 +52,9 @@ class MessagingPage(TemplateView):
 class SchedulePage(TemplateView):
     template_name = 'schedule.html'
 
+class GradeAnalysis(TemplateView):
+    template_name = 'gradeanalysis.html'
+
 class EmailPage(TemplateView):
     template_name = 'email.html'
 
