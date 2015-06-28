@@ -40,6 +40,21 @@ class LoginPage(TemplateView):
 class MessagingPage(TemplateView):
     template_name = 'messaging.html'
 
+class EmailPage(TemplateView):
+    template_name = 'email.html'
+
+
+class ProcessEmailPage(TemplateView):
+    def get(self, request):
+        requests.post(
+        "https://api.mailgun.net/v3/sandboxeda0aa81f6d346ecae9b4ef6294369bc.mailgun.org/messages",
+        auth=("api", "key-b44eaf5a3d236dcb5c118f08fdee11e0"),
+        data={"from": "Excited User <mailgun@sandboxeda0aa81f6d346ecae9b4ef6294369bc.mailgun.org>",
+              "to": ["bar@example.com", "zhangfan.shawn@gmail.com"],
+              "subject": "Hello",
+              "text": "Testing some Mailgun awesomness!"})
+        return HttpResponse("sent email!") 
+
 class ClassesPage(TemplateView):
     template_name = 'classes.html'
     def get (self, request):
