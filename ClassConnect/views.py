@@ -92,8 +92,14 @@ class GradeBookPage(TemplateView):
 class ClassesPage(TemplateView):
     template_name = 'classes.html'
     def post (self, request):
+
         login = request.POST
-        r = requests.post('http://sandbox.api.hmhco.com/v1/sample_token?client_id=40694671-d66a-44b9-a1f5-471522046577.hmhco.com&grant_type=password&username=' + login['username'] + '&password=' + login['password'],
+        if 'username' in login:
+            r = requests.post('http://sandbox.api.hmhco.com/v1/sample_token?client_id=40694671-d66a-44b9-a1f5-471522046577.hmhco.com&grant_type=password&username=' + login['username'] + '&password=' + login['password'],
+                        headers={'Vnd-HMH-Api-Key':'8ad2641f17b878c1e7df05ee2bb09dbb', 
+                        'Content-Type':'application/x-www-form-urlencoded'})
+        else:
+            r = requests.post('http://sandbox.api.hmhco.com/v1/sample_token?client_id=40694671-d66a-44b9-a1f5-471522046577.hmhco.com&grant_type=password&username=gandalf&password=password',
                         headers={'Vnd-HMH-Api-Key':'8ad2641f17b878c1e7df05ee2bb09dbb', 
                         'Content-Type':'application/x-www-form-urlencoded'})
         data = json.loads(r.text)
