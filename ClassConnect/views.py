@@ -9,10 +9,15 @@ from django.views.generic import TemplateView
 from django.shortcuts import render
 
 from django.contrib.auth.views import redirect_to_login
+
+from django.shortcuts import render
+from django.shortcuts import redirect
+
 import requests
 import json
 import pdb
 import datetime
+
 
 
 class ErrorView(View):
@@ -50,11 +55,11 @@ class ProcessEmailPage(TemplateView):
         requests.post(
         "https://api.mailgun.net/v3/sandboxeda0aa81f6d346ecae9b4ef6294369bc.mailgun.org/messages",
         auth=("api", "key-b44eaf5a3d236dcb5c118f08fdee11e0"),
-        data={"from": "Excited User <mailgun@sandboxeda0aa81f6d346ecae9b4ef6294369bc.mailgun.org>",
-              "to": ["bar@example.com", "zhangfan.shawn@gmail.com"],
-              "subject": "Hello",
-              "text": "Testing some Mailgun awesomness!"})
-        return HttpResponse("sent email!") 
+        data={"from": "Gandalf <mailgun@sandboxeda0aa81f6d346ecae9b4ef6294369bc.mailgun.org>",
+              "to": ["bar@example.com", "nathanfennel@gmail.com"],
+              "subject": "Student Update",
+              "text": "We haven't talked for a while. Just want to let you know, Frodo has been doing great!"})
+        return redirect('email')
 
 class ClassesPage(TemplateView):
     template_name = 'classes.html'
