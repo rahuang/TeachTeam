@@ -92,7 +92,7 @@
                               </div>
                               <div class="col-lg-4">
                                 <span class="profile-ava pull-right">
-                                        <img alt="" class="simple" src="{{STATIC_URL}}img/avatar1_small.jpg">
+                                        <img alt="" class="simple" src="{{STATIC_URL}}img/gandalf.jpg">
                                         Gandalf
                                 </span>                                
                               </div>
@@ -103,21 +103,21 @@
                               <tr onclick="document.location = '/messaging';">
                                   <td>Today</td>
                                   <td>
-                                      web design
+                                     I wanted to check in about Frodo...
                                   </td>
                                   <td>
                                       <span class="badge bg-important">Upload</span>
                                   </td>
                                   <td>
                                     <span class="profile-ava">
-                                        <img alt="" class="simple" src="{{STATIC_URL}}img/avatar1_small.jpg">
+                                        <img alt="" class="simple" src="{{STATIC_URL}}img/gandalf.jpg">
                                     </span>
                                   </td>
                               </tr>
                               <tr>
                                   <td>Yesterday</td>
                                   <td>
-                                      Project Design Task
+                                      Can you explain the latest science...
                                   </td>
                                   <td>
                                       <span class="badge bg-success">Task</span>
@@ -129,7 +129,7 @@
                               <tr>
                                   <td>21-10-14</td>
                                   <td>
-                                      Generate Invoice
+                                      Samwise needs help on his HW...
                                   </td>
                                   <td>
                                       <span class="badge bg-success">Task</span>
@@ -141,21 +141,21 @@
                               <tr>
                                   <td>22-10-14</td>
                                   <td>
-                                      Project Testing
+                                      Just wanted to let you know that...
                                   </td>
                                   <td>
                                       <span class="badge bg-primary">To-Do</span>
                                   </td>
                                   <td>
                                       <span class="profile-ava">
-                                        <img alt="" class="simple" src="{{STATIC_URL}}img/avatar1_small.jpg">
+                                        <img alt="" class="simple" src="{{STATIC_URL}}img/gandalf.jpg">
                                       </span>
                                   </td>
                               </tr>
                               <tr>
                                   <td>24-10-14</td>
                                   <td>
-                                      Project Release Date
+                                      Can you send more practice for...
                                   </td>
                                   <td>
                                       <span class="badge bg-info">Milestone</span>
@@ -167,7 +167,7 @@
                               <tr>
                                   <td>28-10-14</td>
                                   <td>
-                                      Project Release Date
+                                    Thanks for sharing the recent update...
                                   </td>
                                   <td>
                                       <span class="badge bg-primary">To-Do</span>
@@ -179,7 +179,7 @@
                               <tr>
                                   <td>Last week</td>
                                   <td>
-                                      Project Release Date
+                                      Please help Aragon with his proj...
                                   </td>
                                   <td>
                                       <span class="badge bg-primary">To-Do</span>
@@ -191,14 +191,14 @@
                               <tr>
                                   <td>last month</td>
                                   <td>
-                                      Project Release Date
+                                      Can you give me an update on Sam.
                                   </td>
                                   <td>
                                       <span class="badge bg-success">To-Do</span>
                                   </td>
                                   <td>
                                       <span class="profile-ava">
-                                        <img alt="" class="simple" src="{{STATIC_URL}}img/avatar1_small.jpg">
+                                        <img alt="" class="simple" src="{{STATIC_URL}}img/gandalf.jpg">
                                       </span>
                                   </td>
                               </tr>
@@ -237,16 +237,15 @@
                                 {% for student in students %}
                                     <tr>
                                         <td>{{student.name.actualNameOfRecord.givenName}} {{student.name.actualNameOfRecord.familyName}}</td>
-                                        <td>2563</td>
-                                        <td>1025</td>
+                                        <td>{{student.id}}</td>
+                                        <td>{{student.grade}}</td>
                                         <td>
                                             <div class="progress thin">
-                                                <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="73" aria-valuemin="0" aria-valuemax="100" style="width: 73%">
+                                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{student.grade}}" aria-valuemin="0" aria-valuemax="100" style="width: {{student.grade}}%">
                                                 </div>
-                                                <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="27" aria-valuemin="0" aria-valuemax="100" style="width: 27%">
-                                                </div>
+                                               
                                             </div>
-                                            <span class="sr-only">73%</span>    
+                                            <span class="sr-only">{{student.grade}}</span>    
                                         </td>
                                     </tr>
                                 {% endfor %}
@@ -263,8 +262,7 @@
                             <h2><i class="fa fa-flag-o red"></i><strong>Assigments</strong></h2>
                             <div class="panel-actions">
                                 <a href="index.html#" class="btn-setting"><i class="fa fa-rotate-right"></i></a>
-                                <a href="index.html#" class="btn-minimize"><i class="fa fa-chevron-up"></i></a>
-                                <a href="index.html#" class="btn-close"><i class="fa fa-times"></i></a>
+                                
                             </div>
                         </div>
                         <div class="panel-body">
@@ -284,10 +282,9 @@
                                         <td>{{assignment.dueDate}}</td>
                                         <td style="min-width:100px">
                                             <div class="progress thin">
-                                                <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="57" aria-valuemin="0" aria-valuemax="100" style="width: 57%">
+                                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="57" aria-valuemin="0" aria-valuemax="100" style="width: 57%">
                                                 </div>
-                                                <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="43" aria-valuemin="0" aria-valuemax="100" style="width: 43%">
-                                                </div>
+                                           
                                             </div>
                                             <span class="sr-only">57%</span>    
                                         </td>
