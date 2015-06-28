@@ -66,7 +66,7 @@ class ProcessEmailPage(TemplateView):
 class GradeBookPage(TemplateView):
 
     def get(self, request):
-        
+        pass
 
 class ClassesPage(TemplateView):
     template_name = 'classes.html'
