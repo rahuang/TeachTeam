@@ -19,6 +19,8 @@ urlpatterns = patterns('',
     url(r'^classes$', views.ClassesPage.as_view(), name='classes'),
     url(r'^class/$', views.ClassPage.as_view(), name='class'),
     url(r'^messaging$', views.MessagingPage.as_view(), name='msg'),
+    url(r'^email$', views.EmailPage.as_view(), name='email'),
+    url(r'^process-email$', views.ProcessEmailPage.as_view(), name='processemail'),
     url(r'^$', views.LoginPage.as_view(), name='login'),
     
     url(r'^test/', include('testapp.urls')),
