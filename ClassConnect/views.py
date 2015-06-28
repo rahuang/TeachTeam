@@ -12,6 +12,7 @@ from django.contrib.auth.views import redirect_to_login
 import requests
 import json
 import pdb
+import datetime
 
 
 class ErrorView(View):
@@ -98,12 +99,37 @@ class ClassPage(TemplateView):
         notCompleteAssignments = []
         for assignment in assignmentData:
             if assignment['sectionRefId'] == classID:
+                assignment['dueDate'] = datetime.datetime.strptime(assignment['dueDate'][0:10], "%Y-%m-%d").date()
                 if assignment['status'] == "COMPLETED":
                     completeAssignments.append(assignment)
                 else:
                     notCompleteAssignments.append(assignment)
 
-        return render(request, 'class.html', {"completeAssignments": completeAssignments, "notCompleteAssignments": notCompleteAssignments}) 
+        # studentData = requests.get('http://sandbox.api.hmhco.com/v1/students',
+        #                 headers={'Authorization': data['access_token'],
+        #                 'Vnd-HMH-Api-Key':'8ad2641f17b878c1e7df05ee2bb09dbb',
+        #                 'Content-Type':'application/json',
+        #                 'Accept':'application/json'})
+        # studentData = json.loads(studentData.text)
+        sectionStudent = requests.get('http://sandbox.api.hmhco.com/v1/studentSectionAssociations',
+                        headers={'Authorization': data['access_token'],
+                        'Vnd-HMH-Api-Key':'8ad2641f17b878c1e7df05ee2bb09dbb',
+                        'Content-Type':'application/json',
+                        'Accept':'application/json'})
+        sectionStudent = json.loads(sectionStudent.text)
+        students = []
+        for ss in sectionStudent:
+            if ss['sectionRefId'] == classID:
+                student = requests.get('http://sandbox.api.hmhco.com/v1/students/' + ss['studentRefId'],
+                        headers={'Authorization': data['access_token'],
+                        'Vnd-HMH-Api-Key':'8ad2641f17b878c1e7df05ee2bb09dbb',
+                        'Content-Type':'application/json',
+                        'Accept':'application/json'})
+                students.append(json.loads(student.text))
+
+
+
+        return render(request, 'class.html', {"students":students, "completeAssignments": completeAssignments, "notCompleteAssignments": notCompleteAssignments}) 
     
     
 class IndexPage(TemplateView):
