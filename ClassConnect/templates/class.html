@@ -13,7 +13,8 @@
                     </ol>
                 </div>
             </div>
-                        <div class="col-md-4 portlets">
+            <div class="row">
+            <div class="col-md-4 portlets">
               <div class="panel panel-default">
                 <div class="panel-heading">
                   <div class="pull-left">Quick Post</div>
@@ -25,8 +26,10 @@
                     
                       <div class="form quick-post">
                                       <!-- Edit profile form (not working)-->
-                                      <form class="form-horizontal">
+                                      <form class="form-horizontal" method="get" action="/class/?id=ecbf057b-d0b1-405b-abc9-2a03569fef23&name=The%20Fellowship%20of%20the%20Ring">
                                           <!-- Title -->
+                                          <input type="text" name="id" value="ecbf057b-d0b1-405b-abc9-2a03569fef23" hidden>
+                                          <input tyep="text" name="name" value="The Fellowship of the Ring" hidden>
                                           <div class="form-group">
                                             <label class="control-label col-lg-2" for="title">Title</label>
                                             <div class="col-lg-10"> 
@@ -74,9 +77,6 @@
                                     </div>
                   
 
-                  </div>
-                  <div class="widget-foot">
-                    <!-- Footer goes here -->
                   </div>
                 </div>
               </div>
@@ -207,7 +207,7 @@
                       </section>
                       <!--Project Activity end-->
                   </div>
-          
+          </div>
           <!-- Today status end -->
             
               
@@ -298,17 +298,9 @@
                     </div>  
 
                 </div><!--/col-->
-                <div class="col-md-3">
-
                 </div>
-                <div class="col-md-3">            
-                    
-                </div><!--/col-->
-                <div class="col-md-3">
-
-                </div><!--/col-->
-
-                <div class="col-sm-6">
+                <div class="row">
+                <div class="col-sm-12">
                       <section class="panel">
                           <header class="panel-heading">
                               Parent Check-in Reminder
