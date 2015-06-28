@@ -1,0 +1,165 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block body %}
+<section class="wrapper">            
+              <!--overview start-->
+              <div class="row">
+                <div class="col-lg-12">
+                    <h3 class="page-header"><i class="fa fa-laptop"></i> {{className}}</h3>
+                    <ol class="breadcrumb">
+                        <li><i class="fa fa-home"></i><a href="/classes">Home</a></li>
+                        <li><i class="fa fa-laptop"></i>GradeBook - Frodo Baggins</li>                          
+                    </ol>
+                </div>
+            </div>
+
+          <!-- Today status end -->
+            
+              
+                
+            <div class="row">
+                
+                <div class="col-lg-12 col-md-12">    
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h2><i class="fa fa-flag-o red"></i><strong>GradeBook - Frodo Baggins   </strong></h2>
+                            <div class="panel-actions">
+                                <a href="" class="btn-setting"><i class="fa fa-rotate-right"></i></a>
+                               
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <table class="table bootstrap-datatable countries">
+                                <thead>
+                                    <tr>
+                                        <th>Assignment</th>
+                                        <th>Term</th>
+                                        <th>Category</th>
+                                        <th>Weight</th>
+                                        <th>Student Score</th>
+                                        <th>Possible Score</th>
+                                        <th style="min-width:100px"></th>
+                                    </tr>
+                                </thead>   
+                                <tbody>
+                                {% for assignment in assignments %}
+                                    <tr>
+                                        <td>{{assignment.0.name}}</td>
+                                        <td>{{assignment.0.term}}</td>
+                                        <td>{{assignment.0.category}}</td>
+                                        <td>{{assignment.0.weight}}</td>
+                                        <td>{{assignment.0.studentScore}}</td>
+                                        <td>{{assignment.0.totalScore}}</td>
+                                        <td>
+                                            <div class="progress thin">
+                                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{student.grade}}" aria-valuemin="0" aria-valuemax="100" style="width: {{ assignment.1 }}%">
+                                                </div>
+                                               
+                                            </div>
+                                            <span class="sr-only">{{student.grade}}</span>    
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                    <tr>
+                                        <td>{{assignment.0.name}}</td>
+                                        <td>{{assignment.0.term}}</td>
+                                        <td>{{assignment.0.weight}}</td>
+                                        <td>{{assignment.0.studentScore}}</td>
+                                        <td>{{assignment.0.totalScore}}</td>
+                                        <td>
+                                            <div class="progress thin">
+                                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{student.grade}}" aria-valuemin="0" aria-valuemax="100" style="width: {{ assignment.1 }}%">
+                                                </div>
+                                               
+                                            </div>
+                                            <span class="sr-only">{{student.grade}}</span>    
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <section class="panel">
+                          <header class="panel-heading">
+                             Submit Assignment
+                          </header>
+                          <div class="panel-body">
+                              <form class="form-horizontal " method="post" action="/gradebook" style="text-align:center;">
+                                    {% csrf_token %}      
+                                  <div class="form-group">
+                                      <label class="col-sm-2 control-label">Assignment Name</label>
+                                      <div class="col-sm-10">
+                                          <input type="text" name="name" class="form-control round-input">
+                                      </div>
+                                  </div>
+                                  <div class="form-group">
+                                      <label class="col-sm-2 control-label">Term</label>
+                                      <div class="col-sm-10">
+                                          <input type="number" name="term" class="form-control round-input">
+                                      </div>
+                                  </div>
+                                  <div class="form-group">
+                                      <label class="control-label col-lg-2" for="inputSuccess">Category</label>
+                                      <div class="col-lg-10">
+
+                                          <select name="category" class="form-control m-bot15">
+                                              <option>Homework</option>
+                                              <option>Quiz</option>
+                                              <option>Test</option>
+                                          </select>
+
+                                      </div>
+                                  </div>
+                                  <div class="form-group">
+                                      <label class="col-sm-2 control-label">Weight</label>
+                                      <div class="col-sm-10">
+                                          <input type="number" step="any" name="weight" class="form-control round-input">
+                                      </div>
+                                  </div>
+                                  <div class="form-group">
+                                      <label class="col-sm-2 control-label">Student Score</label>
+                                      <div class="col-sm-10">
+                                          <input type="number" name="studentScore" class="form-control round-input">
+                                      </div>
+                                  </div>
+                                  <div class="form-group">
+                                      <label class="col-sm-2 control-label">Possible Score</label>
+                                      <div class="col-sm-10">
+                                          <input type="number" name="totalScore" class="form-control round-input">
+                                      </div>
+                                  </div>
+                                  <button type="submit" class="btn btn-primary">Submit</button>
+                              </form>
+                          </div>
+                      </section>
+                        </div>
+    
+                    </div>  
+
+                </div><!--/col-->
+                <div class="col-md-3">
+
+                </div>
+                <div class="col-md-3">            
+                    
+                </div><!--/col-->
+                <div class="col-md-3">
+
+                </div><!--/col-->
+
+              </div>
+                
+              </div>
+
+                    
+                   
+                <!-- statics end -->
+
+                 
+              </div><br><br>
+        
+              <!-- project team & activity end -->
+
+          </section>
+
+{% endblock %}

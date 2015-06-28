@@ -19,6 +19,7 @@ import requests
 import json
 import pdb
 import datetime
+from ClassConnect.models import *
 
 
 
@@ -66,7 +67,24 @@ class ProcessEmailPage(TemplateView):
 class GradeBookPage(TemplateView):
 
     def get(self, request):
-        pass
+        data = request.GET
+        if 'id' in data:
+            studentID = data['id']
+        assignments = Assignment.objects.all()
+        tempAssignments = []
+        for assignment in assignments:
+            temp = [assignment, float(assignment.studentScore) / float(assignment.totalScore) * 100]
+            tempAssignments.append(temp)
+        # return HttpResponse(assignments)
+        return render(request, 'gradebook.html', {"assignments": tempAssignments})
+
+    def post(self, request):
+        data = request.POST
+        newAssignment = Assignment(name=data['name'], term=data['term'], category=data['category'], weight=data['weight'], studentScore=data['studentScore'], totalScore=data['totalScore'])
+        newAssignment.save()
+        assignments = Assignment.objects.all()
+        tempAssignments = []
+        return redirect('gradebook')
 
 class ClassesPage(TemplateView):
     template_name = 'classes.html'
