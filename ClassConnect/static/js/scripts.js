@@ -95,6 +95,6 @@ jQuery(document).ready(function(){
 function sendMessage(){
     input = $("#message").val();
     $("#message").val("");
-    $("#newMessage").html('<div class="avatar pull-right"><img src="/static/img/user22.png" alt=""/></div><div class="chat-content"><div class="chat-meta">3 hours ago <span class="pull-right">Gandalf</span></div>' + input + '<div class="clearfix"></div></div>');
+    $("#newMessage").html('<div class="avatar pull-right"><img src="/static/img/gandalf40.jpg" alt=""/></div><div class="chat-content"><div class="chat-meta">3 hours ago <span class="pull-right">Gandalf</span></div>' + input + '<div class="clearfix"></div></div>');
 
 }
