@@ -228,7 +228,7 @@
                                 <thead>
                                     <tr>
                                         <th>Student</th>
-                                        <th>ID</th>
+                                        <th>Email</th>
                                         <th>Avg. Grade</th>
                                         <th>Performance</th>
                                     </tr>
@@ -237,13 +237,14 @@
                                 {% for student in students %}
                                     <tr onclick="document.location = '/gradebook?id={{student.id}}';">
                                         <td>{{student.name.actualNameOfRecord.givenName}} {{student.name.actualNameOfRecord.familyName}}</td>
-                                        <td>{{student.id}}</td>
+                                        <td>{{student.email.0.emailAddress}}</td>
                                         <td>{{student.grade}}</td>
                                         <td>
                                             <div class="progress thin">
                                                 <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{student.grade}}" aria-valuemin="0" aria-valuemax="100" style="width: {{student.grade}}%">
                                                 </div>
-                                               
+                                               <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="{{student.gradeLeft}}" aria-valuemin="0" aria-valuemax="100" style="width: {{student.gradeLeft}}%">
+                                               </div>
                                             </div>
                                             <span class="sr-only">{{student.grade}}</span>    
                                         </td>
@@ -282,9 +283,10 @@
                                         <td>{{assignment.dueDate}}</td>
                                         <td style="min-width:100px">
                                             <div class="progress thin">
-                                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="57" aria-valuemin="0" aria-valuemax="100" style="width: 57%">
+                                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{assignment.percent}}" aria-valuemin="0" aria-valuemax="100" style="width: {{assignment.percent}}%">
                                                 </div>
-                                           
+                                                <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="{{assignment.percentLeft}}" aria-valuemin="0" aria-valuemax="100" style="width: {{assignment.percentLeft}}%">
+                                               </div>
                                             </div>
                                             <span class="sr-only">57%</span>    
                                         </td>
