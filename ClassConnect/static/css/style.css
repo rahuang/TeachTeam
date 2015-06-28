@@ -87,7 +87,8 @@ table tr th { color: #688a7e;}
   background-size: cover;
 }
 .login-img3-body{
-  background: url('../img/bg-1.jpg') no-repeat center center fixed; 
+ /* background: url('../img/bg.jpg') no-repeat center center fixed; */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,0.5)), color-stop(100%,rgba(255,255,255,0.5))), url(../img/bg.jpg) no-repeat;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
