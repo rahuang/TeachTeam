@@ -66,7 +66,12 @@ class ClassesPage(TemplateView):
                                 'Accept':'application/json'})
                     classes.append(json.loads(temp.text))
             classes.append({"longName":"TempClass1"})
-        return render(request, 'classes.html', {"classes": classes})
+        return render(request, 'classes.html', {"data": classID, "classes": classes})
+
+class ClassPage(TemplateView):
+    def get(self, request, id_name=None):
+        data = request.GET['id']
+        return HttpResponse(data)
     
     
 class IndexPage(TemplateView):
