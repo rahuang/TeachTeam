@@ -48,6 +48,9 @@ class LoginPage(TemplateView):
 class MessagingPage(TemplateView):
     template_name = 'messaging.html'
 
+class SchedulePage(TemplateView):
+    template_name = 'schedule.html'
+
 class EmailPage(TemplateView):
     template_name = 'email.html'
 
