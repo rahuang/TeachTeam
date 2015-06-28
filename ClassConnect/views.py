@@ -129,7 +129,7 @@ class ClassPage(TemplateView):
 
 
 
-        return render(request, 'class.html', {"className": request.GET['name'], students":students, "completeAssignments": completeAssignments, "notCompleteAssignments": notCompleteAssignments}) 
+        return render(request, 'class.html', {"className": request.GET['name'], "students":students, "completeAssignments": completeAssignments, "notCompleteAssignments": notCompleteAssignments}) 
     
     
 class IndexPage(TemplateView):
