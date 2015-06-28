@@ -13,6 +13,8 @@ from django.contrib.auth.views import redirect_to_login
 from django.shortcuts import render
 from django.shortcuts import redirect
 
+from random import randint
+
 import requests
 import json
 import pdb
@@ -130,7 +132,11 @@ class ClassPage(TemplateView):
                         'Vnd-HMH-Api-Key':'8ad2641f17b878c1e7df05ee2bb09dbb',
                         'Content-Type':'application/json',
                         'Accept':'application/json'})
-                students.append(json.loads(student.text))
+                temp = json.loads(student.text)
+                temp['id'] = randint(1000,5000)
+                temp['grade'] = randint(70,100)
+                temp['percentage'] = str(temp['grade'])+'%'
+                students.append(temp)
 
 
 
