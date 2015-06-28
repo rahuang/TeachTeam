@@ -116,6 +116,8 @@ class ClassPage(TemplateView):
                 if assignment['status'] == "COMPLETED":
                     completeAssignments.append(assignment)
                 else:
+                    assignment['percent'] = randint(70,100)
+                    assignment['percentLeft'] = 100 - assignment['percent']
                     notCompleteAssignments.append(assignment)
 
         # studentData = requests.get('http://sandbox.api.hmhco.com/v1/students',
@@ -139,8 +141,9 @@ class ClassPage(TemplateView):
                         'Content-Type':'application/json',
                         'Accept':'application/json'})
                 temp = json.loads(student.text)
-                temp['id'] = randint(1000,5000)
+                temp['email'] = temp['emailList']
                 temp['grade'] = randint(70,100)
+                temp['gradeLeft'] = 100 - temp['grade']
                 temp['percentage'] = str(temp['grade'])+'%'
                 students.append(temp)
 
